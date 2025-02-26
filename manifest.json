@@ -1,0 +1,20 @@
+{
+  "name": "Resonance",
+  "short_name": "Resonance",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fdf6e3",
+  "theme_color": "#e67e22",
+  "icons": [
+    {
+      "src": "playlist.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "playlist.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
