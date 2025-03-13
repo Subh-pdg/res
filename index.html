@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- Change title to Resonance -->
+  <!-- Added viewport for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resonance</title>
   
   <!-- Set the app icon -->
@@ -17,6 +18,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
+    /* Define CSS variables for maintainability */
+    :root {
+      --primary-color: #e67e22;
+      --secondary-color: #f39c12;
+      --background-color: #fdf6e3;
+      --text-color: #333;
+      --nav-bg: #fff8e1;
+      --white: #fff;
+      --shadow-light: rgba(0, 0, 0, 0.1);
+      --shadow-medium: rgba(0, 0, 0, 0.15);
+    }
+
     /* Custom Bengali Font */
     @font-face {
       font-family: 'Kalpana';
@@ -33,14 +46,14 @@
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fdf6e3;
-      color: #333;
+      background: var(--background-color);
+      color: var(--text-color);
       font-size: 1.2em;
     }
     /* Desktop Top Navigation Bar */
     nav.top-nav {
-      background: linear-gradient(90deg, #ffffff, #fff8e1);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      background: linear-gradient(90deg, var(--white), var(--nav-bg));
+      box-shadow: 0 2px 4px var(--shadow-light);
       display: flex;
       justify-content: center;
       padding: 8px 0;
@@ -57,6 +70,7 @@
       backdrop-filter: blur(10px);
       border-radius: 9999px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      min-width: 790px;  /* Increased minimum width to prevent text wrapping */
     }
     @keyframes dynamicIslandBounce {
       0% { transform: translateX(-50%) scale(0.95); }
@@ -67,7 +81,7 @@
       animation: dynamicIslandBounce 0.5s ease-out;
     }
     nav.top-nav a {
-      color: #333;
+      color: var(--text-color);
       padding: 10px 18px;
       text-decoration: none;
       font-weight: 600;
@@ -76,19 +90,20 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      position: relative;
     }
     nav.top-nav a i {
       font-size: 1.4em;
       transition: transform 0.3s, color 0.3s;
     }
-    nav.top-nav a:hover { color: #e67e22; }
-    nav.top-nav a:hover i { transform: scale(1.15); color: #e67e22; }
+    nav.top-nav a:hover { color: var(--primary-color); }
+    nav.top-nav a:hover i { transform: scale(1.15); color: var(--primary-color); }
     nav.top-nav a::after {
       content: "";
       position: absolute;
       width: 0;
       height: 2px;
-      background: #e67e22;
+      background: var(--primary-color);
       left: 50%;
       bottom: 4px;
       transition: width 0.3s, left 0.3s;
@@ -116,7 +131,7 @@
     aside#sideNav {
       position: fixed;
       top: 0;
-      left: -250px; /* Hidden off-screen */
+      left: -250px;
       width: 250px;
       height: 100vh;
       background: #2c3e50;
@@ -143,15 +158,15 @@
       font-size: 1em;
     }
     aside#sideNav nav a:hover {
-      color: #f39c12;
+      color: var(--primary-color);
     }
     
     /* Main Container */
-    .container {
+    main.container {
       max-width: 900px;
       margin: 80px auto 24px auto;
       padding: 24px;
-      background: #fff;
+      background: var(--white);
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       border-radius: 8px;
     }
@@ -162,7 +177,7 @@
       border-bottom: 1px solid #eee;
       padding-bottom: 10px;
       margin-bottom: 18px;
-      color: #e67e22;
+      color: var(--primary-color);
       font-size: 1.5em;
     }
     /* Form Styling */
@@ -194,7 +209,7 @@
     form button {
       display: inline-block;
       padding: 12px 24px;
-      background: linear-gradient(135deg, #f39c12, #e67e22);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -204,7 +219,7 @@
       margin-top: 18px;
     }
     form button:hover {
-      background: linear-gradient(135deg, #e67e22, #f39c12);
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
     form button i { margin-right: 8px; }
@@ -214,7 +229,7 @@
       display: inline-block;
       margin-top: 8px;
       padding: 10px 16px;
-      background: #e67e22;
+      background: var(--primary-color);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -222,7 +237,23 @@
       font-size: 1.1em;
       transition: background 0.3s;
     }
-    .btn-search:hover { background: #f39c12; }
+    .btn-search:hover { background: var(--secondary-color); }
+    
+    /* Custom styling for the quiz dropdown */
+    #songGuess {
+      width: 100%;
+      padding: 10px;
+      font-size: 1.1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23e67e22" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
     
     /* Lyrics areas */
     #lyricsText,
@@ -251,9 +282,9 @@
       font-size: 1.1em;
     }
     .lyrics-toggle button.active {
-      background: #e67e22;
+      background: var(--primary-color);
       color: #fff;
-      border-color: #e67e22;
+      border-color: var(--primary-color);
     }
     .lyrics-toggle button:not(:last-child) { border-right: none; }
     
@@ -261,7 +292,7 @@
     .remove-image-btn {
       margin-top: 8px;
       padding: 6px 10px;
-      background: #e67e22;
+      background: var(--primary-color);
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -336,21 +367,21 @@
       color: #555;
       transition: transform 0.2s, color 0.3s;
     }
-    .btn-icon:hover { transform: scale(1.1); color: #e67e22; }
+    .btn-icon:hover { transform: scale(1.1); color: var(--primary-color); }
     
     /* Song Details Card */
     .song-details-card {
       background: #f9f9f9;
       padding: 20px;
       border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px var(--shadow-light);
       margin-bottom: 20px;
       position: relative;
       font-size: 1.1em;
     }
-    .song-details-card h3 { margin-top: 40px; color: #e67e22; font-size: 1.6em; }
+    .song-details-card h3 { margin-top: 40px; color: var(--primary-color); font-size: 1.6em; }
     .song-details-card pre {
-      background: #fff;
+      background: var(--white);
       padding: 12px;
       border-radius: 4px;
       border: 1px solid #ddd;
@@ -368,12 +399,12 @@
       position: absolute;
       top: 115px;
       left: 268px;
-      color: #e67e22;
+      color: var(--primary-color);
       text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
       transition: color 0.3s;
       z-index: 10;
     }
-    #backToList:hover { color: #f39c12; }
+    #backToList:hover { color: var(--secondary-color); }
     
     /* Notification Container */
     #notification {
@@ -441,13 +472,13 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 10px;
-      background: #fff;
+      background: var(--white);
     }
     
     /* Transfer Section Buttons */
     .transfer-btn {
       padding: 10px 20px;
-      background: linear-gradient(135deg, #f39c12, #e67e22);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -457,7 +488,7 @@
       margin-right: 10px;
     }
     .transfer-btn:hover {
-      background: linear-gradient(135deg, #e67e22, #f39c12);
+      background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
       box-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
     
@@ -475,7 +506,7 @@
     .settings-nav button {
       flex: 1;
       padding: 10px;
-      background: #e67e22;
+      background: var(--primary-color);
       border: none;
       cursor: pointer;
       font-size: 1.1em;
@@ -484,7 +515,7 @@
     }
     .settings-nav button.inactive {
       background: #f0f0f0;
-      color: #333;
+      color: var(--text-color);
     }
     .settings-section { display: none; }
     .settings-section.active { display: block; }
@@ -513,7 +544,7 @@
     }
     #searchModal.active { display: flex; }
     #searchModal .modal-content {
-      background: #fff;
+      background: var(--white);
       padding: 20px;
       border-radius: 8px;
       max-width: 600px;
@@ -528,7 +559,7 @@
       right: 10px;
       font-size: 1.5em;
       cursor: pointer;
-      color: #e67e22;
+      color: var(--primary-color);
     }
     .search-result-card {
       border: 1px solid #ddd;
@@ -545,7 +576,7 @@
     .search-result-card .show-less,
     .search-result-card .use-lyrics {
       cursor: pointer;
-      color: #e67e22;
+      color: var(--primary-color);
       font-size: 1.1em;
       margin-right: 10px;
       padding: 4px 8px;
@@ -573,7 +604,7 @@
     }
     #customModal.active { display: flex; }
     #customModal .modal-content {
-      background: #fff;
+      background: var(--white);
       padding: 20px;
       border-radius: 8px;
       text-align: center;
@@ -610,7 +641,7 @@
     }
     #resetModal.active { display: flex; }
     #resetModal .modal-content {
-      background: #fff;
+      background: var(--white);
       padding: 20px;
       border-radius: 8px;
       text-align: center;
@@ -645,7 +676,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #e67e22;
+      background: var(--primary-color);
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -661,7 +692,7 @@
       transition: background 0.3s, transform 0.3s ease;
     }
     #backToTop:hover { 
-      background: #f39c12;
+      background: var(--secondary-color);
       transform: scale(1.2);
     }
     
@@ -683,31 +714,27 @@
       background: #f0f0f0;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: #e67e22;
+      background-color: var(--primary-color);
       border-radius: 4px;
     }
     ::-webkit-scrollbar-thumb:hover {
-      background-color: #f39c12;
+      background-color: var(--secondary-color);
     }
     * {
       scrollbar-width: thin;
-      scrollbar-color: #e67e22 #f0f0f0;
+      scrollbar-color: var(--primary-color) #f0f0f0;
     }
     
     /* Responsive Adjustments for Smaller Devices */
     @media (max-width: 600px) {
-      /* Show Mobile Header with Hamburger */
       header.mobile-header {
         display: flex;
       }
-      /* Hide desktop top nav on mobile */
       nav.top-nav { display: none; }
-      
-      /* Side Navigation Panel */
       aside#sideNav {
         position: fixed;
         top: 0;
-        left: -250px; /* hidden off-screen initially */
+        left: -250px;
         width: 250px;
         height: 100vh;
         background: #2c3e50;
@@ -735,17 +762,13 @@
         font-size: 1em;
       }
       aside#sideNav nav a:hover {
-        color: #f39c12;
+        color: var(--primary-color);
       }
-      
-      /* Adjust container to leave room for mobile header */
-      .container {
+      main.container {
         margin-top: 60px;
         padding: 10px;
         max-width: 100%;
       }
-      
-      /* Resize buttons and inputs for mobile */
       form button,
       .btn-search,
       .transfer-btn {
@@ -764,31 +787,33 @@
 </head>
 <body>
   <!-- Mobile Header with Hamburger Icon -->
-  <header class="mobile-header">
-    <i class="fas fa-bars hamburger" id="hamburger"></i>
+  <header class="mobile-header" role="banner">
+    <i class="fas fa-bars hamburger" id="hamburger" aria-label="Open Navigation"></i>
     <span style="margin-left:10px; font-size:1.2em;">Resonance</span>
   </header>
   
   <!-- Mobile Side Navigation Panel -->
-  <aside id="sideNav">
-    <div class="close-btn" id="closeSideNav"><i class="fas fa-times"></i></div>
+  <aside id="sideNav" aria-label="Mobile Navigation">
+    <div class="close-btn" id="closeSideNav" aria-label="Close Navigation"><i class="fas fa-times"></i></div>
     <nav>
       <a href="#" data-page="home"><i class="fas fa-home"></i><span style="margin-left:8px;">Home</span></a>
       <a href="#" data-page="addSong"><i class="fas fa-plus"></i><span style="margin-left:8px;">Add Song</span></a>
       <a href="#" data-page="songList"><i class="fas fa-list"></i><span style="margin-left:8px;">Song List</span></a>
+      <a href="#" data-page="games"><i class="fas fa-gamepad"></i><span style="margin-left:8px;">Games</span></a>
       <a href="#" data-page="settings"><i class="fas fa-cog"></i><span style="margin-left:8px;">Settings</span></a>
     </nav>
   </aside>
   
   <!-- Desktop Top Navigation (visible on larger screens) -->
-  <nav class="top-nav">
+  <nav class="top-nav" role="navigation" aria-label="Desktop Navigation">
     <a href="#" data-page="home"><i class="fas fa-home"></i><span> Home</span></a>
     <a href="#" data-page="addSong"><i class="fas fa-plus"></i><span> Add Song</span></a>
     <a href="#" data-page="songList"><i class="fas fa-list"></i><span> Song List</span></a>
+    <a href="#" data-page="games"><i class="fas fa-gamepad"></i><span> Games</span></a>
     <a href="#" data-page="settings"><i class="fas fa-cog"></i><span> Settings</span></a>
   </nav>
   
-  <div class="container">
+  <main class="container">
     <!-- Home Page -->
     <div id="homePage" class="page active">
       <h2>Favourite Songs</h2>
@@ -861,7 +886,7 @@
           </div>
           <div id="editLyricsImageDiv" class="hidden">
             <label for="editLyricsImage">Lyrics Image: <small>(Leave blank to keep current)</small></label>
-            <input type="file" id="editLyricsImage" accept="image/*">
+            <input type="file" id="editLyricsImage" accept="audio/*">
             <button type="button" id="removeEditLyricsImage" class="remove-image-btn hidden">Remove Image</button>
             <div id="editLyricsImagePreview" class="image-preview"></div>
           </div>
@@ -873,22 +898,42 @@
     <!-- Song List Page -->
     <div id="songListPage" class="page hidden">
       <h2>All Songs</h2>
-      <!-- Search Bar -->
       <input type="text" id="songSearchInput" placeholder="Search songs..." style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1.1em;">
       <ul id="songList" class="song-list"></ul>
     </div>
     <!-- Song Details Page -->
     <div id="songDetailsPage" class="page hidden">
-      <!-- Back Button in Song Details -->
       <button id="backToList"><i class="fas fa-arrow-left"></i></button>
-      <!-- Song Details including the default HTML5 audio player -->
       <div id="songDetails" class="bangla">
         <div class="audio-container">
           <audio controls>
             Your browser does not support the audio element.
           </audio>
         </div>
-        <!-- Lyrics will be inserted here -->
+      </div>
+    </div>
+    <!-- Games Page -->
+    <div id="gamesPage" class="page hidden">
+      <h2>Music Quiz</h2>
+      <p>Listen to the snippet and guess the song!</p>
+      <div class="game-container">
+        <div class="audio-container">
+          <audio id="gameAudio" controls></audio>
+        </div>
+        <button id="playSnippetBtn" class="transfer-btn" style="margin-top:10px;">
+          <i class="fas fa-play"></i> Play Snippet
+        </button>
+        <div style="margin-top:10px;">
+          <label for="songGuess">Guess the song:</label>
+          <select id="songGuess">
+            <option value="" disabled selected>Select a song</option>
+            <!-- Options will be populated dynamically -->
+          </select>
+        </div>
+        <button id="submitGuessBtn" class="transfer-btn" style="margin-top:10px;">
+          <i class="fas fa-check"></i> Submit Guess
+        </button>
+        <div id="gameFeedback" style="margin-top:10px; font-size:1.1em;"></div>
       </div>
     </div>
     <!-- Settings Page -->
@@ -919,11 +964,10 @@
         <h3>Load Lyrics Database</h3>
         <input type="file" id="databaseFile" accept=".txt" />
         <p>Load a .txt file where lyrics are separated by "* -"</p>
-        <!-- Reset Button for Database -->
         <button id="resetDatabaseBtn" class="transfer-btn" style="margin-top:10px;"><i class="fas fa-sync-alt"></i> Reset Database</button>
       </div>
     </div>
-  </div>
+  </main>
   
   <!-- Search Modal for Lyrics Database -->
   <div id="searchModal" class="modal">
@@ -961,6 +1005,25 @@
   
   <script src="app.js"></script>
   <script>
+    // Fallback navigate function (if not provided by app.js)
+    if (typeof navigate !== 'function') {
+      window.navigate = function(page) {
+        document.querySelectorAll('.page').forEach(function(el) {
+          el.classList.remove('active');
+          el.classList.add('hidden');
+        });
+        var target = document.getElementById(page + 'Page');
+        if (target) {
+          target.classList.remove('hidden');
+          target.classList.add('active');
+          console.log("Navigated to: " + page + "Page");
+        } else {
+          console.warn("No page found for: " + page);
+        }
+        document.dispatchEvent(new Event('pageChange'));
+      };
+    }
+    
     // Update navigation bar animation for desktop
     function updateNav() {
       const nav = document.querySelector('nav.top-nav');
@@ -998,8 +1061,8 @@
       sideNav.classList.remove("open");
     });
     
-    // Also bind side nav links to navigation function and close side nav on click
-    document.querySelectorAll("aside#sideNav nav a").forEach(link => {
+    // Bind navigation links to the navigate function
+    document.querySelectorAll("aside#sideNav nav a, nav.top-nav a").forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
         const page = link.getAttribute("data-page");
@@ -1007,18 +1070,6 @@
         sideNav.classList.remove("open");
       });
     });
-  </script>
-  <script>
-    // Service Worker Registration for PWA functionality
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
-        console.error('Service Worker registration failed:', error);
-      });
-    }
   </script>
 </body>
 </html>
