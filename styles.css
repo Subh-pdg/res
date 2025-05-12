@@ -1,0 +1,461 @@
+#songsList li.last-viewed {
+  background-color: rgba(33, 150, 243, 0.1);
+  border-left: 4px solid #2196f3;
+}
+
+#songsList li.last-viewed:hover {
+  background-color: rgba(33, 150, 243, 0.15);
+}
+
+/* Custom Checkbox Styles */
+.song-checkbox {
+  position: relative;
+  margin-right: 12px;
+}
+
+.song-checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.song-checkbox label {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.song-checkbox input[type="checkbox"]:checked + label {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
+.song-checkbox input[type="checkbox"]:checked + label::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.song-checkbox input[type="checkbox"]:hover + label {
+  border-color: #2196F3;
+}
+
+/* Update bulk export item styles */
+.bulk-export-item {
+  display: flex;
+  align-items: center;
+  padding: 500px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.bulk-export-item:hover {
+  background: #f5f5f5;
+  border-color: #2196F3;
+}
+
+.song-item-content {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.song-name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.song-details {
+  display: flex;
+  gap: 12px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.song-writer, .song-singer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Bulk Export Modal Styles */
+#bulkExportModal .modal-content {
+  max-width: 800px;
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+#bulkExportModal .modal-header {
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #d35400, #e67e22);
+  color: white;
+  position: relative;
+}
+
+#bulkExportModal .modal-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+}
+
+#bulkExportModal .modal-body {
+  padding: 32px;
+}
+
+#bulkExportModal .modal-footer {
+  padding: 24px 32px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+/* Search Bar Styles */
+.bulk-export-search {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.bulk-export-search .search-input {
+  width: 0px;
+  padding: 16px 24px 16px 48px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 10rem;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+  color: #333;
+}
+
+.bulk-export-search .search-input:focus {
+  outline: none;
+  border-color: #d35400;
+  box-shadow: 0 0 0 4px rgba(211, 84, 0, 0.1);
+  background: #fff;
+}
+
+.bulk-export-search .search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  fill: #666;
+  pointer-events: none;
+  transition: fill 0.3s ease;
+}
+
+.bulk-export-search .search-input:focus + .search-icon {
+  fill: #d35400;
+}
+
+/* List Container Styles */
+.bulk-export-list {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  margin: 24px 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.bulk-export-header {
+  padding: 16px 24px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Select All Container Styles */
+.select-all-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.select-all-container:hover {
+  background: rgba(211, 84, 0, 0.05);
+}
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #d35400;
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.select-all-container input:checked + .checkmark {
+  background: #d35400;
+  border-color: #d35400;
+}
+
+.select-all-container input:checked + .checkmark:after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.select-all-label {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* List Item Styles */
+.bulk-export-item {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.bulk-export-item:last-child {
+  border-bottom: none;
+}
+
+.bulk-export-item:hover {
+  background: #f8f9fa;
+  transform: translateX(4px);
+}
+
+.bulk-export-item.selected {
+  background: rgba(211, 84, 0, 0.05);
+  border-left: 3px solid #d35400;
+}
+
+.bulk-export-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #d35400;
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.bulk-export-item:hover::before {
+  transform: scaleY(1);
+}
+
+.bulk-export-item .checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #d35400;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.bulk-export-item.selected .checkbox {
+  background: #d35400;
+}
+
+.bulk-export-item.selected .checkbox:after {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.bulk-export-item .song-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bulk-export-item .song-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bulk-export-item .song-details {
+  display: flex;
+  gap: 16px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.bulk-export-item .song-writer,
+.bulk-export-item .song-singer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bulk-export-item .song-writer svg,
+.bulk-export-item .song-singer svg {
+  width: 16px;
+  height: 16px;
+  fill: #666;
+}
+
+/* Warning Message Styles */
+.bulk-export-warning {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  padding: 12px 16px;
+  background: rgba(211, 47, 47, 0.1);
+  border-radius: 8px;
+  display: none;
+  margin-top: 16px;
+  animation: slideIn 0.3s ease;
+}
+
+.bulk-export-warning.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Button Styles */
+#bulkExportModal .modal-footer button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+#bulkExportModal .modal-footer .secondary-button {
+  background: none;
+  border: 2px solid #e0e0e0;
+  color: #666;
+}
+
+#bulkExportModal .modal-footer .secondary-button:hover {
+  background: #f8f9fa;
+  border-color: #d35400;
+  color: #d35400;
+}
+
+#bulkExportModal .modal-footer .primary-button {
+  background: #d35400;
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#bulkExportModal .modal-footer .primary-button:hover {
+  background: #e67e22;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(211, 84, 0, 0.2);
+}
+
+#bulkExportModal .modal-footer .primary-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Loading Spinner Styles */
+.bulk-export-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.bulk-export-loading .spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #d35400;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+.bulk-export-loading p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+} 
